@@ -1,0 +1,2 @@
+class Compromisso < ApplicationRecord
+end
