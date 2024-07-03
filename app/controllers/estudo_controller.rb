@@ -1,0 +1,2 @@
+class EstudoController < ApplicationController
+end

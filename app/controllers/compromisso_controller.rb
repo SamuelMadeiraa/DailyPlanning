@@ -1,0 +1,2 @@
+class CompromissoController < ApplicationController
+end

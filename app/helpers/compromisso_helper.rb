@@ -1,0 +1,2 @@
+module CompromissoHelper
+end
