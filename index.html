@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capa de Caderno Escolar</title>
+    <style>
+        body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.notebook-cover {
+    background: #fffae6;
+    width: 350px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.spiral {
+    width: 40px;
+    height: 100%;
+    position: absolute;
+    left: -20px;
+    top: 0;
+    background: #fffae6;
+}
+
+.spiral::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 50%;
+    margin: 10px auto;
+    box-shadow: 0 40px 0 0 #000,
+                0 80px 0 0 #000,
+                0 120px 0 0 #000,
+                0 160px 0 0 #000,
+                0 200px 0 0 #000;
+}
+
+.content {
+    padding-left: 30px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #0073e6;
+}
+
+p {
+    font-size: 1em;
+    margin: 10px 0;
+    line-height: 1.5;
+    color: #333;
+    border-bottom: 1px dashed #000;
+    padding-bottom: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="notebook-cover">
+        <div class="spiral"></div>
+        <div class="content">
+            <h1>Meu Caderno</h1>
+            <p>Nome: _____________</p>
+            <p>Matéria: _____________</p>
+            <p>Escola: _____________</p>
+        </div>
+    </div>
+</body>
+</html>

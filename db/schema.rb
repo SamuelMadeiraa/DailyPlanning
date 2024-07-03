@@ -10,20 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_03_181939) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_03_184342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "compromissos", force: :cascade do |t|
     t.string "titulo"
     t.string "local"
+    t.datetime "dataehora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+  create_table "estudos", force: :cascade do |t|
+    t.string "titulo"
+    t.string "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "financeiros", force: :cascade do |t|
+    t.string "titulo"
+    t.datetime "data_vencimento"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tarefas", force: :cascade do |t|
+    t.string "titulo"
+    t.string "descricao"
+    t.boolean "status"
+    t.datetime "dataehora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

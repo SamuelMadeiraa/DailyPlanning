@@ -1,0 +1,2 @@
+class Estudo < ApplicationRecord
+end
