@@ -1,0 +1,17 @@
+<p>
+  <strong>Título:</strong>
+  <%= @compromisso.titulo %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @compromisso.local %>
+</p>
+
+<p>
+  <strong>Data e Hora:</strong>
+  <%= @compromisso.dataehora %>
+</p>
+
+<%= link_to 'Editar', edit_compromisso_path(@compromisso) %> |
+<%= link_to 'Voltar', compromissos_path %>

@@ -1,0 +1,31 @@
+<%= form_with(model: @compromisso, local: true, class: "form") do |form| %>
+  <% if @compromisso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compromisso.errors.count, "erro") %> impedem que este compromisso seja salvo:</h2>
+      <ul>
+        <% @compromisso.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Titulo %>
+    <%= form.text_field :titulo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Local %>
+    <%= form.text_field :local %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Data_e_Hora %>
+    <%= form.datetime_local_field :dataehora %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

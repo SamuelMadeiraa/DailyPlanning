@@ -1,0 +1,27 @@
+<h1>Compromissos</h1>
+
+<%= link_to 'Novo Compromisso', new_compromisso_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Local</th>
+      <th>Data e Hora</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compromissos.each do |compromisso| %>
+      <tr>
+        <td><%= compromisso.titulo %></td>
+        <td><%= compromisso.local %></td>
+        <td><%= compromisso.dataehora %></td>
+        <td><%= link_to 'Mostrar', compromisso %></td>
+        <td><%= link_to 'Editar', edit_compromisso_path(compromisso) %></td>
+        <td><%= link_to 'Apagar', compromisso, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
