@@ -1,21 +1,20 @@
 <p>
   <strong>Título:</strong>
-  <%= @tarefas.titulo %>
+  <%= @tarefa.titulo %>
 </p>
 
 <p>
   <strong>Descrição:</strong>
-  <%= @tarefas.local %>
+  <%= @tarefa.descricao %>
 </p>
 
 <p>
   <strong>Data e Hora:</strong>
-  <%= @tarefas.dataehora %>
+  <%= @tarefa.dataehora %>
 </p>
 <p>
   <strong>Status:</strong>
-  <%= @tarefas.status %>
+  <%= @tarefa.status %>
 </p>
 
-<%= link_to 'Editar', edit_tarefas_path(@tarefas) %> |
 <%= link_to 'Voltar', tarefas_path %>

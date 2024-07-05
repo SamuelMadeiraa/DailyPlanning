@@ -1,9 +1,14 @@
 class CompromissosController < ApplicationController
     before_action :set_compromisso, only: [:show, :edit, :update, :destroy]
-  
-    def index
-      @compromissos = Compromisso.all
-    end
+    
+      def index
+        @compromissos = Compromisso.all
+      end
+
+      def filtrar
+        @compromissos = Compromisso.filter_by_compromisso(params[:query])
+        render 'filtrar'
+      end
     
     def show
     end

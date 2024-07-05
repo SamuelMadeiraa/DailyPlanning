@@ -4,6 +4,11 @@ class TarefasController < ApplicationController
     def index
       @tarefas = Tarefa.all
     end
+
+    def filtrar
+      @tarefas = Tarefa.filter_by_tarefa(params[:query])
+      render 'filtrar'
+    end
   
     def show
     end
