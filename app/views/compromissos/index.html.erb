@@ -139,39 +139,7 @@
 </head>
 <body>
    
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">DailyPlanning</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <nav class="navbar bg-body-tertiary mb-3">
-                <div class="container-fluid">
-                    <form class="d-flex w-100" role="search">
-                        <input class="form-control me-2 border-0" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light border-0" type="submit"><i class="bi bi-search"></i></button>
-                    </form>
-                </div>
-            </nav>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-house"></i> Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-journal-bookmark-fill"></i> Compromissos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-coin"></i> Finanças</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-pencil"></i> Estudo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-card-checklist"></i> Lista de Tarefas</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+   
 
     <main class="container my-4">
         <h1 class="mb-4">Compromissos</h1>
@@ -189,7 +157,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <%= link_to 'Mostrar', compromisso, class: "btn btn-sm btn-outline-primary" %>
                             <%= link_to 'Editar', edit_compromisso_path(compromisso), class: "btn btn-sm btn-outline-secondary" %>
-                            <%= link_to 'Apagar', compromisso, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-sm btn-outline-danger" %>
+                            
                         </div>
                     </div>
                 </section>

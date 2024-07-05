@@ -24,6 +24,8 @@
             background-color: #f4f4f9;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             min-height: 100vh;
         }
 
@@ -44,20 +46,29 @@
             margin-right: auto;
         }
 
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
         .search {
             width: 350px;
             height: 50px;
             background-color: #B7D3FA;
             align-items: center;
-            border-radius: 10px; /* igual ao card */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* igual ao card */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
-            margin-left: 500px;
-            transition: transform 0.3s; /* igual ao card */
+            transition: transform 0.3s;
+            display: flex;
+            justify-content: center;
         }
 
         .search:hover {
-            transform: scale(1.05); /* igual ao card */
+            transform: scale(1.05);
         }
 
         .card {
@@ -140,10 +151,12 @@
     </style>
 </head>
 <body>
-   <section class="search">
-   </section>
+    <div class="search-container">
+        <section class="search">
+            <!-- Conteúdo da barra de pesquisa -->
+        </section>
+    </div>
 
-    
     <main class="container my-4">
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
@@ -152,7 +165,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Meus compromissos</h5>
                         <p class="card-text">Gerencie seus compromissos de forma eficiente com o DailyPlanning.</p>
-                        <button class="button"><%= link_to "Compromissos", compromissos_path%> </button>
+                        <button class="button"><%= link_to "Compromissos", compromissos_path %> </button>
                     </div>
                 </section>
             </div>
@@ -188,9 +201,5 @@
             </div>
         </div>
     </main>
-
-    
-
-   
 </body>
 </html>

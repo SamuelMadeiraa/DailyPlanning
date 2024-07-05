@@ -4,7 +4,7 @@ class CompromissosController < ApplicationController
     def index
       @compromissos = Compromisso.all
     end
-  
+    
     def show
     end
   
