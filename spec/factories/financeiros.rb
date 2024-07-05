@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :financeiro do
-    titulo { "MyString" }
-    data_vencimento { "2024-07-03 15:37:01" }
-    status { false }
+    titulo { Faker::Lorem.sentence }
+    data_vencimento { Faker::Time.between(from: DateTime.now, to: DateTime.now + 30.days) }
+    status { [true, false].sample }  # Aleatoriamente verdadeiro ou falso
   end
 end

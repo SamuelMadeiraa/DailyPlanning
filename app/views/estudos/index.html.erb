@@ -1,0 +1,25 @@
+<h1>Estudos</h1>
+
+<%= link_to 'Novo Estudo', new_estudo_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descricao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estudos.each do |estudo| %>
+      <tr>
+        <td><%= estudo.titulo %></td>
+        <td><%= estudo.descricao %></td>
+        <td><%= link_to 'Mostrar', estudo %></td>
+        <td><%= link_to 'Editar', edit_estudo_path(estudo) %></td>
+        <td><%= link_to 'Excluir', estudo, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

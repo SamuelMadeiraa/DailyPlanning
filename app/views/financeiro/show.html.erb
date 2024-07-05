@@ -1,0 +1,17 @@
+<p>
+  <strong>Título:</strong>
+  <%= @financeiro.titulo %>
+</p>
+
+<p>
+  <strong>data vencimento:</strong>
+  <%= @financeiro.data_vencimento %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @financeiro.status %>
+</p>
+
+<%= link_to 'Editar', edit_financeiro_path(@financeiro) %> |
+<%= link_to 'Voltar', financeiros_path %>

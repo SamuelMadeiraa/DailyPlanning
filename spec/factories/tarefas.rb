@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :tarefa do
-    titulo { "MyString" }
-    descricao { "MyString" }
-    status { false }
-    dataehora { "2024-07-03 15:43:42" }
+    titulo { Faker::Lorem.sentence }
+    descricao { Faker::Lorem.paragraph }
+    status { [true, false].sample }  # Aleatoriamente verdadeiro ou falso
+    dataehora { Faker::Time.between(from: DateTime.now - 1, to: DateTime.now) }
   end
 end

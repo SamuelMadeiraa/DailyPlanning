@@ -1,27 +1,207 @@
-<h1>Compromissos</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerencie seus compromissos diários de forma eficiente com o DailyPlanning.">
+    <meta name="keywords" content="DailyPlanning, gerenciamento de compromissos, finanças pessoais, estudos">
+    <title>DailyPlanning - Gerencie seus compromissos diários</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
 
-<%= link_to 'Novo Compromisso', new_compromisso_path %>
+    <style>
+        * {
+            font-family: 'Alata', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<table>
-  <thead>
-    <tr>
-      <th>Título</th>
-      <th>Local</th>
-      <th>Data e Hora</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-  <tbody>
-    <% @compromissos.each do |compromisso| %>
-      <tr>
-        <td><%= compromisso.titulo %></td>
-        <td><%= compromisso.local %></td>
-        <td><%= compromisso.dataehora %></td>
-        <td><%= link_to 'Mostrar', compromisso %></td>
-        <td><%= link_to 'Editar', edit_compromisso_path(compromisso) %></td>
-        <td><%= link_to 'Apagar', compromisso, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        .navbar {
+            background-color: #B7D3FA;
+            height: 50px;
+            border-radius: 3px;
+            color: #D077AF;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            width: 100%;
+        }
+
+        #logo {
+            height: 30px;
+            color: #D077AF;
+            margin-right: auto;
+        }
+
+        .btn-offcanvas {
+            background-color: #B7D3FA;
+            color: #D077AF;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .btn-offcanvas:hover {
+            background-color: #7e9bd7;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        .card-text {
+            color: #666666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #D077AF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #D077AF;
+        }
+
+        footer {
+            background-color: #B7D3FA;
+            color: #D077AF;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin: 0 10px;
+        }
+
+        .footer-links a {
+            color: #D077AF;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #7e9bd7;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">DailyPlanning</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="navbar bg-body-tertiary mb-3">
+                <div class="container-fluid">
+                    <form class="d-flex w-100" role="search">
+                        <input class="form-control me-2 border-0" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-light border-0" type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+            </nav>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-house"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-journal-bookmark-fill"></i> Compromissos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-coin"></i> Finanças</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-pencil"></i> Estudo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-card-checklist"></i> Lista de Tarefas</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="container my-4">
+        <h1 class="mb-4">Compromissos</h1>
+       <button class=""> <%= link_to 'Novo Compromisso', new_compromisso_path, class: "button" %></button>
+
+        <div class="row g-4">
+            <% @compromissos.each do |compromisso| %>
+            <div class="col-md-6 col-lg-4">
+                <section class="card">
+                    <img src="https://img.freepik.com/free-photo/calendar-with-date-schedule-alarm-clock_107791-15677.jpg" class="card-img-top" alt="Ilustração de compromissos">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= compromisso.titulo %></h5>
+                        <p class="card-text"><strong>Local:</strong> <%= compromisso.local %></p>
+                        <p class="card-text"><strong>Data e Hora:</strong> <%= compromisso.dataehora.strftime("%d/%m/%Y %H:%M") %></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <%= link_to 'Mostrar', compromisso, class: "btn btn-sm btn-outline-primary" %>
+                            <%= link_to 'Editar', edit_compromisso_path(compromisso), class: "btn btn-sm btn-outline-secondary" %>
+                            <%= link_to 'Apagar', compromisso, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-sm btn-outline-danger" %>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <% end %>
+        </div>
+    </main>
+
+   
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGzOgRVK4l4lG7yrj8PAUFA7cRY3OM1HhP/tlKygc2xqM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-Y4o2C4VphXK+3YAdnDBfSEZPwxL+dOFNCj5iE43ayQlZ+NxS5D7bL7BPT7bXd1Zj" crossorigin="anonymous"></script>
+</body>
+</html>

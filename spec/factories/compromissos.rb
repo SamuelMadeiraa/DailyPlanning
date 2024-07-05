@@ -1,7 +1,7 @@
-  FactoryBot.define do
+FactoryBot.define do
   factory :compromisso do
-    titulo { "MyString" }
-    local { "MyString" }
-    dataehora { "2024-07-03 15:34:51" }
+    titulo { Faker::Lorem.sentence }
+    local { Faker::Address.city }
+    dataehora { Faker::Time.between(from: DateTime.now - 1, to: DateTime.now) }
   end
 end

@@ -1,0 +1,69 @@
+require 'rails_helper'
+
+RSpec.describe CompromissosController, type: :controller do
+  let!(:compromisso) { create(:compromisso) }
+
+  describe "GET #index" do
+    it "returns 200 success" do
+      get :index
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template(:index)
+    end
+  end
+
+  describe "GET #show" do
+    it "returns 200 success" do
+      get :show, params: { id: compromisso.id }
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template(:show)
+    end
+  end
+
+  describe "GET #new" do
+    it "returns 200 success" do
+      get :new
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template(:new)
+    end
+  end
+
+  describe "POST #create" do
+    context "with valid attributes" do
+      it "creates a new compromisso" do
+        expect {
+          post :create, params: { compromisso: attributes_for(:compromisso) }
+        }.to change(Compromisso, :count).by(1)
+      end
+
+      it "redirects to the created compromisso" do
+        post :create, params: { compromisso: attributes_for(:compromisso) }
+        expect(response).to redirect_to(Compromisso.last)
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does not save the new compromisso" do
+        expect {
+          post :create, params: { compromisso: attributes_for(:compromisso, titulo: nil) }
+        }.to_not change(Compromisso, :count)
+      end
+
+      it "re-renders the :new template" do
+        post :create, params: { compromisso: attributes_for(:compromisso, titulo: nil) }
+        expect(response).to render_template(:new)
+      end
+    end
+  end
+  describe "DELETE #destroy" do
+    it "deletes the compromisso" do
+      expect {
+        delete :destroy, params: { id: compromisso.id }
+      }.to change(Compromisso, :count).by(-1)
+    end
+
+    it "redirects to compromissos#index" do
+      delete :destroy, params: { id: compromisso.id }
+      expect(response).to redirect_to(compromissos_path)
+    end
+  end
+end

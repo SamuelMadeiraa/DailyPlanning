@@ -1,0 +1,31 @@
+<%= form_with(model: @financeiro, local: true, class: "form") do |form| %>
+  <% if @financeiro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@financeiro.errors.count, "erro") %> impedem que este financeiro seja salvo:</h2>
+      <ul>
+        <% @financeiro.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Titulo %>
+    <%= form.text_field :titulo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Data_vencimento %>
+    <%= form.text_field :data_vencimento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Status %>
+    <%= form.datetime_local_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
