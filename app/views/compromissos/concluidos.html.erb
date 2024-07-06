@@ -1,3 +1,4 @@
+<%# app/views/compromissos/concluidos.html.erb %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +7,9 @@
 <body>
   <main class="container my-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="mb-0">Compromissos</h1>
+        <h1 class="mb-0">Compromissos Concluídos</h1>
         <%= link_to 'Novo Compromisso', new_compromisso_path, class: "button" %>
     </div>
-
-    <div class="search-container mb-4">
-    <%= form_with url: compromissos_path, method: :get, class: "form-inline" do |form| %>
-        <div class="input-group">
-            <%= form.label :query, "Filtrar por:", class: "input-group-text" %>
-            <%= form.text_field :query, class: "form-control search-input", placeholder: "Filtrar compromissos" %>
-            <%= form.select :status, options_for_select([['Todos', ''], ['Concluídos', 'concluidos'], ['Não Concluídos', 'nao_concluidos']]), {}, class: "form-select" %>
-            <%= form.datetime_local_field :start_date, class: "form-control" %>
-            <%= form.submit "Filtrar", class: "btn btn-outline-primary" %>
-        </div>
-    <% end %>
-</div>
-
 
     <div class="row g-4">
         <% @compromissos.each do |compromisso| %>
@@ -37,11 +25,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <%= link_to 'Mostrar', compromisso, class: "btn btn-sm btn-outline-primary" %>
                         <%= link_to 'Editar', edit_compromisso_path(compromisso), class: "btn btn-sm btn-outline-secondary" %>
-                        <% if compromisso.status? %>
-                            <span class="btn btn-sm btn-outline-success">Concluído</span>
-                        <% else %>
-                            <%= button_to 'Concluir', compromisso_path(compromisso), method: :patch, data: { confirm: 'Tem certeza?' }, class: "btn btn-sm btn-outline-success" %>
-                        <% end %>
+                        <span class="btn btn-sm btn-outline-success">Concluído</span>
                     </div>
                 </div>
             </section>
@@ -51,7 +35,6 @@
 
     <%= link_to 'Voltar', root_path %>
   </main>
-
   <!-- Scripts Bootstrap -->
 </body>
 </html>

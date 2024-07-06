@@ -3,7 +3,7 @@ class CreateFinanceiros < ActiveRecord::Migration[7.1]
     create_table :financeiros do |t|
       t.string :titulo
       t.datetime :data_vencimento
-      t.boolean :status
+      t.boolean :status,  default: false
 
       t.timestamps
     end

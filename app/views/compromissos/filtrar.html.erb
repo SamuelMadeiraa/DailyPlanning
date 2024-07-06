@@ -1,24 +1,17 @@
-<h1>Compromissos Fitrados</h1>
+<h1>Resultados da Filtro</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>local</th>
-      <th>data e hora</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @compromissos.each do |compromisso| %>
-      <tr>
-      <td><%= compromisso.titulo%></td>
-      <td><%= compromisso.local%></td>
-            <td><%= compromisso.dataehora%></td>
+<h2>Compromissos</h2>
+<ul>
+  <% @compromissos.each do |compromisso| %>
+    <li><%= compromisso.titulo %></li>
+  <% end %>
+</ul>
 
-      <td>
-        
-      </td>
-     </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2>Tarefas</h2>
+<ul>
+  <% @tarefas.each do |tarefa| %>
+    <li><%= tarefa.titulo %></li>
+        <li><%= tarefa.descricao %></li>
+
+  <% end %>
+</ul>

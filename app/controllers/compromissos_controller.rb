@@ -1,14 +1,38 @@
 class CompromissosController < ApplicationController
     before_action :set_compromisso, only: [:show, :edit, :update, :destroy]
-    
-      def index
-        @compromissos = Compromisso.all
+    def index
+      @compromissos = Compromisso.all
+      
+      if params[:query].present?
+        @compromissos = @compromissos.where('titulo LIKE ?', "%#{params[:query]}%")
       end
+  
+      if params[:status].present?
+        if params[:status] == 'concluidos'
+          @compromissos = @compromissos.where(status: true)
+        elsif params[:status] == 'nao_concluidos'
+          @compromissos = @compromissos.where(status: false)
+        end
+      end
+  
+      if params[:start_date].present? && params[:end_date].present?
+        start_date = DateTime.parse(params[:start_date])
+        end_date = DateTime.parse(params[:end_date])
+        @compromissos = @compromissos.where(dataehora: start_date..end_date)
+      elsif params[:start_date].present?
+        start_date = DateTime.parse(params[:start_date])
+        @compromissos = @compromissos.where('dataehora >= ?', start_date)
+      elsif params[:end_date].present?
+        end_date = DateTime.parse(params[:end_date])
+        @compromissos = @compromissos.where('dataehora <= ?', end_date)
+      end
+    end
 
-      def filtrar
-        @compromissos = Compromisso.filter_by_compromisso(params[:query])
-        render 'filtrar'
+      def concluidos
+        @compromissos = Compromisso.where(status: true)
       end
+      
+    
     
     def show
     end
@@ -35,9 +59,11 @@ class CompromissosController < ApplicationController
     end
   
     def update
+      @compromisso = Compromisso.find(params[:id])
+      
       respond_to do |format|
-        if @compromisso.update(compromisso_params)
-          format.html { redirect_to @compromisso, notice: 'Compromisso atualizado com sucesso!' }
+        if @compromisso.update(compromisso_params.merge(status: true))
+          format.html { redirect_to compromissos_path, notice: 'Compromisso atualizado e concluído com sucesso!' }
           format.json { render :show, status: :ok, location: @compromisso }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -45,6 +71,7 @@ class CompromissosController < ApplicationController
         end
       end
     end
+    
   
     def destroy
       @compromisso.destroy
@@ -64,4 +91,5 @@ class CompromissosController < ApplicationController
       params.require(:compromisso).permit(:titulo, :local, :dataehora)
     end
   end
+
   

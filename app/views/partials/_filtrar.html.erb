@@ -1,0 +1,27 @@
+<h1>Compromissos Fitrados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>local</th>
+      <th>data e hora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <h1>Compromissos</h1>
+    <% @compromissos.each do |compromisso| %>
+      <tr>
+      <td><%= compromisso.titulo%></td>
+      <td><%= compromisso.local%></td>
+      <td><%= compromisso.dataehora%></td>
+
+      <td>
+        
+      </td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</table>

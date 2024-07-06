@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   root 'home#index'
-  
-  resources :compromissos do
-    collection do
-      get 'filtrar', to: 'compromissos#filtrar'
-    end
-  end
-  
+  get 'filtrar_compromissos_tarefas', to: 'compromissos#filtrar_compromissos_tarefas', as: :filtrar_compromissos_tarefas
+
   resources :estudos
-  resources :financeiro
+  resources :financeiros
   resources :tarefas
+  
+  resources :compromissos
+    
+  
+  
+  
+  
+
 end

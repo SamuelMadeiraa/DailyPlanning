@@ -5,9 +5,12 @@ class TarefasController < ApplicationController
       @tarefas = Tarefa.all
     end
 
-    def filtrar
-      @tarefas = Tarefa.filter_by_tarefa(params[:query])
-      render 'filtrar'
+    def filtrar_compromissos_tarefas
+      query = params[:query]
+      @compromissos = Compromisso.where("nome LIKE ?", "%#{query}%")
+      @tarefas = Tarefa.where("nome LIKE ?", "%#{query}%")
+
+      render "filtrar"
     end
   
     def show

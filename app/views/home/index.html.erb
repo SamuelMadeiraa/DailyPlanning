@@ -9,154 +9,196 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
     <style>
         * {
-            font-family: 'Alata', sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    font-family: 'Alata', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            background-color: #f4f4f9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
+body {
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
 
-        .navbar {
-            background-color: #B7D3FA;
-            height: 50px;
-            border-radius: 3px;
-            color: #D077AF;
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            width: 100%;
-        }
+.navbar {
+    background-color: #B7D3FA;
+    height: 50px;
+    border-radius: 3px;
+    color: #D077AF;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    width: 100%;
+}
 
-        #logo {
-            height: 30px;
-            color: #D077AF;
-            margin-right: auto;
-        }
+#logo {
+    height: 30px;
+    color: #D077AF;
+    margin-right: auto;
+}
 
-        .search-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-        }
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 100%;
+}
 
-        .search {
-            width: 350px;
-            height: 50px;
-            background-color: #B7D3FA;
-            align-items: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            transition: transform 0.3s;
-            display: flex;
-            justify-content: center;
-        }
+.search {
+    width: 350px;
+    background-color: #B7D3FA;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    transition: transform 0.3s;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
 
-        .search:hover {
-            transform: scale(1.05);
-        }
+.search:hover {
+    transform: scale(1.05);
+}
 
-        .card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
+.barra-pesquisa {
+    width: 250px;
+    background-color: #B7D3FA;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
 
-        .card:hover {
-            transform: scale(1.05);
-        }
+.barra-pesquisa::placeholder {
+    color: #666;
+}
 
-        .card img {
-            width: 100%;
-            height: auto;
-            border-bottom: 1px solid #eeeeee;
-        }
+.barra-pesquisa:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
 
-        .card-body {
-            padding: 20px;
-        }
+.barra-pesquisa-label {
+    background-color: #B7D3FA;
+    border: none;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
-        .card-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #333333;
-        }
+.button-filtrar {
+    background-color: #D077AF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        .card-text {
-            color: #666666;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
+.button-filtrar:hover {
+    background-color: #c067a5;
+}
 
-        .button {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #D077AF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
 
-        .button:hover {
-            background-color: #D077AF;
-        }
+.card:hover {
+    transform: scale(1.05);
+}
 
-        footer {
-            background-color: #B7D3FA;
-            color: #D077AF;
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
-            margin-top: auto;
-        }
+.card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #eeeeee;
+}
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-        }
+.card-body {
+    padding: 20px;
+}
 
-        .footer-links li {
-            margin: 0 10px;
-        }
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333333;
+}
 
-        .footer-links a {
-            color: #D077AF;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+.card-text {
+    color: #666666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
 
-        .footer-links a:hover {
-            color: #7e9bd7;
-        }
-    </style>
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #D077AF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #c067a5;
+}
+
+footer {
+    background-color: #B7D3FA;
+    color: #D077AF;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 0 10px;
+}
+
+.footer-links a {
+    color: #D077AF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #7e9bd7;
+}
+
+    </style> <!-- Seu CSS personalizado aqui -->
+
 </head>
 <body>
-    <div class="search-container">
-        <section class="search">
-            
-        </section>
+        <div class="search-container mb-4">
+        <%= form_with url: filtrar_compromissos_tarefas_path, method: :get, class: "form-inline" do |form| %>
+            <div class="input-group">
+                <%= form.label :query, "Filtrar por:", class: "input-group-text" %>
+                <%= form.text_field :query, class: "form-control search-input", placeholder: "Filtrar compromissos" %>
+                <%= form.submit "Filtrar", class: "btn btn-outline-primary" %>
+            </div>
+        <% end %>
     </div>
-
     <main class="container my-4">
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
@@ -175,7 +217,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Minhas Finanças</h5>
                         <p class="card-text">Gerencie suas finanças pessoais de forma eficiente com o DailyPlanning.</p>
-                        <a href="#" class="button">Ver mais</a>
+                        <button class="button"><%= link_to "Financeiro", financeiros_path	 %> </button>
                     </div>
                 </section>
             </div>
@@ -185,7 +227,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Estudos</h5>
                         <p class="card-text">Gerencie seus estudos de forma organizada com o DailyPlanning.</p>
-                        <a href="#" class="button">Ver mais</a>
+                        <button class="button"><%= link_to "Estudo", estudos_path %> </button>
                     </div>
                 </section>
             </div>
@@ -195,7 +237,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Minhas tarefas</h5>
                         <p class="card-text">Organize suas tarefas diárias com eficiência com o DailyPlanning.</p>
-                        <a href="#" class="button">Ver mais</a>
+                        <button class="button"><%= link_to "Tarefas", tarefas_path %> </button>
                     </div>
                 </section>
             </div>

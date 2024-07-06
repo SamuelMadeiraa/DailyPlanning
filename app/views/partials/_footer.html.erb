@@ -1,11 +1,37 @@
 <footer>
     <div class="container">
         <ul class="footer-links">
-            <li><i class="bi bi-house"></i><%= link_to "Home", root_path %></li>
-            <li><a href="#"><i class="bi bi-journal-bookmark-fill"></i> Compromissos</a></li>
-            <li><a href="#"><i class="bi bi-coin"></i> Finanças</a></li>
-            <li><a href="#"><i class="bi bi-pencil"></i> Estudo</a></li>
-            <li><a href="#"><i class="bi bi-card-checklist"></i> Lista de Tarefas</a></li>
+            <li class="footer-item">
+                <%= link_to root_path do %>
+                    <i class="bi bi-house"></i>
+                    <span class="hover-text">Home</span>
+                <% end %>
+            </li>
+            <li class="footer-item">
+                <%= link_to compromissos_path do %>
+                    <i class="bi bi-journal-bookmark-fill"></i>
+                    <span class="hover-text">Compromissos</span>
+                <% end %>
+            </li>
+            <li class="footer-item">
+                <%= link_to financeiros_path do%>
+                    <i class="bi bi-coin"></i>
+                    <span class="hover-text">Finanças</span>
+                    <% end %>
+                
+            </li>
+            <li class="footer-item">
+                <%= link_to estudos_path do %>
+                    <i class="bi bi-pencil"></i>
+                    <span class="hover-text">Estudo</span>
+                <% end %>
+            </li>
+            <li class="footer-item">
+                <%= link_to tarefas_path do %>
+                    <i class="bi bi-card-checklist"></i>
+                    <span class="hover-text">Tarefas</span>
+                <% end %>
+            </li>
         </ul>
         <p>© 2024 DailyPlanning. Todos os direitos reservados.</p>
     </div>
