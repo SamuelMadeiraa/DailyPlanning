@@ -38,6 +38,16 @@ class FinanceirosController < ApplicationController
         render :edit
       end
     end
+
+    def pago
+      @financeiro = Financeiro.find(params[:id])
+      
+      if @financeiro.update(status: true)
+        redirect_to financeiros_path, notice: 'Conta paga com sucesso.'
+      else
+        redirect_to financeiros_path, alert: 'Não foi possível concluir o pagamento.'
+      end
+    end
   
     # DELETE /financeiros/1
     def destroy
@@ -53,7 +63,7 @@ class FinanceirosController < ApplicationController
   
       # Only allow a trusted parameter "white list" through.
       def financeiro_params
-        params.require(:financeiro).permit(:titulo,  :data_vencimento, :status)
+        params.require(:financeiro).permit(:titulo, :data_paga, :data_vencimento, :status)
       end
   end
   

@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_05_134056) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_07_161025) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categoria", force: :cascade do |t|
+    t.string "titulo"
+    t.bigint "compromisso_id", null: false
+    t.bigint "financeiro_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compromisso_id"], name: "index_categoria_on_compromisso_id"
+    t.index ["financeiro_id"], name: "index_categoria_on_financeiro_id"
+  end
+
+  create_table "categoriafinanceiros", force: :cascade do |t|
+    t.string "titulo"
+    t.bigint "financeiro_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["financeiro_id"], name: "index_categoriafinanceiros_on_financeiro_id"
+  end
 
   create_table "compromissos", force: :cascade do |t|
     t.string "titulo"
@@ -33,9 +51,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_05_134056) do
   create_table "financeiros", force: :cascade do |t|
     t.string "titulo"
     t.datetime "data_vencimento"
-    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "data_paga"
+    t.boolean "status"
   end
 
   create_table "tarefas", force: :cascade do |t|
@@ -47,4 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_05_134056) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "categoria", "compromissos"
+  add_foreign_key "categoria", "financeiros"
+  add_foreign_key "categoriafinanceiros", "financeiros"
 end

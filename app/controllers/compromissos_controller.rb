@@ -58,12 +58,23 @@ class CompromissosController < ApplicationController
     def edit
     end
   
-    def update
+    def concluir
       @compromisso = Compromisso.find(params[:id])
       
+      if @compromisso.update(status: true)
+        redirect_to compromissos_path, notice: 'Compromisso concluído com sucesso.'
+      else
+        redirect_to compromissos_path, alert: 'Não foi possível concluir o compromisso.'
+      end
+    end
+    
+
+    def update
       respond_to do |format|
-        if @compromisso.update(compromisso_params.merge(status: true))
-          format.html { redirect_to compromissos_path, notice: 'Compromisso atualizado e concluído com sucesso!' }
+        if @compromisso.update(compromisso_params, status: true)
+          format.html { redirect_to @compromisso, notice: 'Compromisso atualizado com sucesso!' }
+          format.html { redirect_to compromissos_path, notice: 'Compromisso concluído com sucesso.'
+        }
           format.json { render :show, status: :ok, location: @compromisso }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -71,6 +82,7 @@ class CompromissosController < ApplicationController
         end
       end
     end
+  
     
   
     def destroy
